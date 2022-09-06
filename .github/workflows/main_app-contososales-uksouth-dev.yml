@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'app-contososales-uksouth-dev'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_419844CC6D98456A9D1F3FB51A1C2AF6 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_393B495837BB4F29805E5BA5D5B69DA8 }}
           package: .
