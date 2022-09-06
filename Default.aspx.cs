@@ -74,6 +74,9 @@ namespace WebApplicationSample
 
                     var reader = command.ExecuteReader();
                     GridView1.DataSource = reader;
+
+                    Repeater1.DataSource = reader;
+                    Repeater1.DataBind();
                     reader.Close();
                 }
             }
