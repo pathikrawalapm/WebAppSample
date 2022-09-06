@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Configuration;
 using Npgsql;
-
+using System.Data;
 
 namespace WebApplicationSample
 {
@@ -67,22 +67,22 @@ namespace WebApplicationSample
 
                 // Console.Out.WriteLine("Opening connection");
                 conn.Open();
+                string sQuery = "SELECT * FROM inventory";
 
+                DataTable DT = new DataTable();
 
-                using (var command = new NpgsqlCommand("SELECT * FROM inventory", conn))
-                {
+                DataSet DS = new DataSet("DS1");
+                NpgsqlDataAdapter DA = new NpgsqlDataAdapter();
 
-                    var reader = command.ExecuteReader();
-                    GridView1.DataSource = reader;
+                DA.SelectCommand = new NpgsqlCommand(sQuery, conn);
 
-                    Repeater1.Visible = true;
-                    Repeater1.DataSource = reader;
-                    Repeater1.DataBind();
-                    reader.Close();
+                DA.Fill(DS, "DS1");
 
-                    Label1.Text = "Record :" + Convert.ToString(reader.Rows);
+                GridView1.DataSource = DS;
+                GridView1.DataBind();
 
-                }
+                conn.Close();
+
 
             }
 
