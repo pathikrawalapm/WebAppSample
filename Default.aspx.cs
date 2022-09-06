@@ -75,10 +75,15 @@ namespace WebApplicationSample
                     var reader = command.ExecuteReader();
                     GridView1.DataSource = reader;
 
+                    Repeater1.Visible = true;
                     Repeater1.DataSource = reader;
                     Repeater1.DataBind();
                     reader.Close();
+
+                    Label1.Text = "Record :" + Convert.ToString(reader.Rows);
+
                 }
+
             }
 
         }
